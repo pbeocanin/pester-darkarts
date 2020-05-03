@@ -5,7 +5,7 @@ import Friend from 'components/Friend';
 import Login from 'components/Login';
 import GlobalStyle from '../../global-styles';
 
-const NotFound = () => <p>NOT FOUND HERE</p>;
+const NotFound = () => null;
 
 class App extends React.Component {
 	state = {};
