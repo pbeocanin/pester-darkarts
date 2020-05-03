@@ -5,18 +5,20 @@ const GlobalStyle = createGlobalStyle`
     width: 100vw;
   }
   body {
-
-  	background: #EDEDED;
+	font-family: 'Nunito', sans-serif;
+  	font-style: normal;
+  	font-weight: 400;
+  	background: #F0F6F9;
     height: 100%;
     width: 100%;
 
   }
   ::selection {
-    background: #205199;
+    background: #5738FF;
 	color: #fff;
   }
   ::-moz-selection {
-    background: #205199;
+    background: #5738FF;
 	color: #fff;
   }
 `;

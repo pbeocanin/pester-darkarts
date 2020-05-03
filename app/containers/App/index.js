@@ -1,16 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
+import Friend from 'components/Friend';
+import Login from 'components/Login';
 import GlobalStyle from '../../global-styles';
 
-const Dashboard = () => <p>dash</p>;
-const NotFound = () => <p>not dash</p>;
-
-/* to avoid crashes */
-
-// I hate those comments with *****
-
-// Looking good let's remove all the packages we don't need. Which is literally most of them
+const NotFound = () => <p>NOT FOUND HERE</p>;
 
 class App extends React.Component {
 	state = {};
@@ -28,7 +23,8 @@ class App extends React.Component {
 					/>
 				</Helmet>
 				<Switch>
-					<Route path="/login" exact component={Dashboard} />
+					<Route path="/login/:token?" exact component={Login} />
+					<Route path="/friend" exact component={Friend} />
 					<Route component={NotFound} />
 				</Switch>
 				<GlobalStyle />
