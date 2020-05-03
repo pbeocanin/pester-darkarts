@@ -19,15 +19,14 @@ class App extends React.Component {
 		return (
 			<>
 				<Helmet
-					titleTemplate="%s | LeoTraining"
-					defaultTitle="LeoTraining"
+					titleTemplate="%s | DontPester"
+					defaultTitle="DontPester"
 				>
 					<meta
 						name="description"
-						content="A Web builder application"
+						content="During this time of quarantine, don't let unnecessary interruptions add to your stress. Get Pester & say goodbye to interruptions."
 					/>
 				</Helmet>
-
 				<Switch>
 					<Route path="/login" exact component={Dashboard} />
 					<Route component={NotFound} />
