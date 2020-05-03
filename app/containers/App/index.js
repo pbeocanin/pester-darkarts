@@ -24,7 +24,7 @@ class App extends React.Component {
 				</Helmet>
 				<Switch>
 					<Route path="/login/:token?" exact component={Login} />
-					<Route path="/friend" exact component={Friend} />
+					<Route path="/friend/:token?" exact component={Friend} />
 					<Route component={NotFound} />
 				</Switch>
 				<GlobalStyle />
