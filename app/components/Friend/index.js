@@ -95,7 +95,7 @@ class Friend extends React.Component {
 		return window.location.replace(`dontpester://friend/${token}`);
 	};
 
-	openDeepLink = platform => {
+	handleDownload = platform => {
 		const {
 			match: {
 				params: { token },
