@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 const options = {
-	host: '45.55.42.198',
+	host: '138.197.101.1',
 	username: 'root',
 	path: './build',
 	remoteDir: '/var/www/new_version/',
@@ -17,7 +17,7 @@ const ProgressBar = require('progress');
 const red = '\u001b[41m \u001b[0m';
 // eslint-disable-next-line
 const green = '\u001b[32m \u001b[39m';
-const url = chalk.green.underline('https://app.leotraining.com');
+const url = chalk.green.underline('https://join.dontpester.com');
 
 let bar;
 fs.readdir('build', (err, files) => {
@@ -53,7 +53,7 @@ sftp.on('error', err => {
 					});
 			});
 		}).connect({
-			host: '45.55.42.198',
+			host: '138.197.101.1',
 			port: 22,
 			username: 'root',
 			privateKey: fs.readFileSync(path.resolve('../../.ssh', 'id_rsa')),
