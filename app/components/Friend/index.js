@@ -45,7 +45,6 @@ const Button = styled.button`
 
 class Friend extends React.Component {
 	state = {
-		ip: null,
 		error: null,
 		loading: true,
 	};
@@ -59,30 +58,21 @@ class Friend extends React.Component {
 		if (!token) {
 			return this.setState({ error: 'This link seems to be expired' });
 		}
-		return Promise.all([
-			fetch('https://api.ipify.org', {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			}),
-			fetch(`https://api.dontpester.com/getname/${token}`, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			}),
-		])
-			.then(([res1, res2]) => Promise.all([res1.text(), res2.json()]))
-			.then(([resp1, resp2]) => {
-				if (resp2.name) {
+		return fetch(`https://api.dontpester.com/getname/${token}`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then(res => res.json())
+			.then(resp => {
+				if (resp.name) {
 					return this.setState({
-						ip: resp1,
-						name: resp2.name,
+						name: resp.name,
 						loading: false,
 					});
 				}
-				return this.setState({ error: resp2.error, loading: false });
+				return this.setState({ error: resp.error, loading: false });
 			});
 	};
 
@@ -101,21 +91,24 @@ class Friend extends React.Component {
 				params: { token },
 			},
 		} = this.props;
-		const { ip } = this.state;
-		fetch('https://api.dontpester.com/prepare', {
+		return fetch('https://api.dontpester.com/prepare', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
 				addFriend: token,
-				ip,
 			}),
-		}).catch(() => null);
-		if (platform === 'ios') {
-			return window.location.replace('APPSTORE LINK HERE');
-		}
-		return window.location.replace('PLAYSTORE LINK HERE');
+		})
+			.then(() => {
+				if (platform === 'ios') {
+					return window.location.replace(
+						'https://apps.apple.com/us/app/dont-pester/id1511444045',
+					);
+				}
+				return window.location.replace('PLAYSTORE LINK HERE');
+			})
+			.catch(() => null);
 	};
 
 	componentDidMount() {
