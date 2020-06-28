@@ -106,7 +106,9 @@ class Friend extends React.Component {
 						'https://apps.apple.com/us/app/dont-pester/id1511444045',
 					);
 				}
-				return window.location.replace('PLAYSTORE LINK HERE');
+				return window.location.replace(
+					'https://play.google.com/store/apps/details?id=com.dontpester',
+				);
 			})
 			.catch(() => null);
 	};
